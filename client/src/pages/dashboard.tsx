@@ -44,7 +44,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-railway-light dark:bg-railway-primary transition-colors duration-300">
       <Header lastUpdate={lastUpdate} />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pt-20"> {/* Add padding-top here */}
         {/* Error States */}
         {(statusHasError || speedHasError) && (
           <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
@@ -87,12 +87,12 @@ export default function Dashboard() {
         </div>
 
         {/* Recent Activity - Full Width Below Track Status */}
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <ActivityLogComponent 
             logs={statusData?.logs} 
             isLoading={statusLoading}
           />
-        </div>
+        </div> */}
 
         {/* System Info Footer */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
