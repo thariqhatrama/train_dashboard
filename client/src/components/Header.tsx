@@ -1,13 +1,21 @@
+import { useState, useEffect } from "react";
 import { useTheme } from "./ThemeProvider";
 import { Sun, Moon, Train, Wifi } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface HeaderProps {
-  lastUpdate?: string;
-}
-
-export function Header({ lastUpdate }: HeaderProps) {
+export function Header() {
   const { theme, toggleTheme } = useTheme();
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-railway-secondary shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
@@ -40,12 +48,10 @@ export function Header({ lastUpdate }: HeaderProps) {
               )}
             </Button>
             
-            {lastUpdate && (
-              <div className="hidden sm:flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-                <Wifi className="h-4 w-4" />
-                <span>{lastUpdate}</span>
-              </div>
-            )}
+            <div className="hidden sm:flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+              <Wifi className="h-4 w-4" />
+              <span>{currentTime.toLocaleString('id-ID')}</span>
+            </div>
           </div>
         </div>
       </div>

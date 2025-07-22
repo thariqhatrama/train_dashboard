@@ -9,40 +9,31 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Signal, Database, Shield } from "lucide-react";
 
 export default function Dashboard() {
-  const [lastUpdate, setLastUpdate] = useState<string>("");
-  
-  const { 
-    data: statusData, 
-    isLoading: statusLoading, 
+  const {
+    data: statusData,
+    isLoading: statusLoading,
     error: statusError,
     isError: statusHasError
   } = useRailwayStatus();
   
-  const { 
-    data: speedData, 
+  const {
+    data: speedData,
     isLoading: speedLoading,
     error: speedError,
     isError: speedHasError
   } = useSpeedData();
   
-  const { 
-    data: speedHistory, 
-    isLoading: historyLoading 
+  const {
+    data: speedHistory,
+    isLoading: historyLoading
   } = useSpeedHistory();
-
-  // Update timestamp when data changes
-  useEffect(() => {
-    if (statusData || speedData) {
-      setLastUpdate(new Date().toLocaleString('id-ID'));
-    }
-  }, [statusData, speedData]);
 
   const currentSpeedData = speedData?.[0];
   const isLoading = statusLoading || speedLoading;
 
   return (
     <div className="min-h-screen bg-railway-light dark:bg-railway-primary transition-colors duration-300">
-      <Header lastUpdate={lastUpdate} />
+      <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pt-20"> {/* Add padding-top here */}
         {/* Error States */}
