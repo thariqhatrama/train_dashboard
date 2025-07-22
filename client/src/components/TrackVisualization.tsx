@@ -144,11 +144,11 @@ export function TrackVisualization({ status, isLoading }: TrackVisualizationProp
             Track Checkpoints
           </h3>
           
-          <div className="flex items-center space-x-2 overflow-x-auto pb-4">
+          <div className="flex items-center justify-between gap-2">
             {checkpoints.map((checkpoint, index) => (
-              <div key={checkpoint} className="flex items-center space-x-2">
-                <div className="flex-shrink-0 bg-gray-50 dark:bg-railway-primary rounded-lg p-4 min-w-[140px] text-center">
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">{checkpoint}</h4>
+              <div key={checkpoint} className="flex items-center flex-1">
+                <div className="flex-1 bg-gray-50 dark:bg-railway-primary rounded-lg p-3 text-center">
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-2 text-sm">{checkpoint}</h4>
                   <div className="mb-2">
                     <TrafficLight state={status.lights[checkpoint] || { red: false, yellow: false, green: false }} />
                   </div>
@@ -159,7 +159,7 @@ export function TrackVisualization({ status, isLoading }: TrackVisualizationProp
                 </div>
                 
                 {index < checkpoints.length - 1 && (
-                  <div className="flex-shrink-0 w-8 h-2 bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-500 rounded-full" />
+                  <div className="w-4 h-2 bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-500 rounded-full mx-1" />
                 )}
               </div>
             ))}

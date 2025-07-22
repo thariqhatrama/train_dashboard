@@ -83,13 +83,15 @@ export default function Dashboard() {
               speedHistory={speedHistory}
               isLoading={speedLoading || historyLoading}
             />
-
-            {/* Activity Log */}
-            <ActivityLogComponent 
-              logs={statusData?.logs} 
-              isLoading={statusLoading}
-            />
           </div>
+        </div>
+
+        {/* Recent Activity - Full Width Below Track Status */}
+        <div className="mt-6">
+          <ActivityLogComponent 
+            logs={statusData?.logs} 
+            isLoading={statusLoading}
+          />
         </div>
 
         {/* System Info Footer */}
