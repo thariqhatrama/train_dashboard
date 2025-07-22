@@ -9,10 +9,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Proxy route for get_status.php (handles both status and speed endpoints)
   app.get('/get_status.php', async (req, res) => {
     try {
-      const phpFile = path.join(import.meta.dirname, 'get_status_1753106332238.php');
       const queryString = req.url.split('?')[1] || '';
+      const wrapperFile = path.join(import.meta.dirname, 'php_wrapper.php');
       
-      const php = spawn('php', [phpFile], {
+      const php = spawn('php', [wrapperFile], {
         env: {
           ...process.env,
           QUERY_STRING: queryString,
@@ -114,10 +114,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Proxy route for train_insert.php (for logging train events)
   app.get('/train_insert.php', async (req, res) => {
     try {
-      const phpFile = path.join(import.meta.dirname, 'train_insert_1753106332240.php');
       const queryString = req.url.split('?')[1] || '';
       
-      const php = spawn('php', [phpFile], {
+      // Create wrapper for train_insert
+      const trainWrapperFile = path.join(import.meta.dirname, 'train_wrapper.php');
+      
+      const php = spawn('php', [trainWrapperFile], {
         env: {
           ...process.env,
           QUERY_STRING: queryString,
