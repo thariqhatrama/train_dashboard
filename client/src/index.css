@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base colors */
+  --background: hsl(248, 100%, 99%);
+  --foreground: hsl(215, 25%, 15%);
+  --muted: hsl(215, 16%, 96%);
+  --muted-foreground: hsl(215, 10%, 45%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(215, 25%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(215, 25%, 15%);
+  --border: hsl(215, 12%, 85%);
+  --input: hsl(215, 12%, 85%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(215, 16%, 96%);
+  --secondary-foreground: hsl(215, 25%, 15%);
+  --accent: hsl(215, 16%, 96%);
+  --accent-foreground: hsl(215, 25%, 15%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(60, 9%, 98%);
+  --ring: hsl(215, 25%, 15%);
+  --radius: 0.75rem;
+
+  /* Railway-specific colors - Light theme */
+  --railway-primary: hsl(215, 25%, 15%);
+  --railway-secondary: hsl(215, 20%, 20%);
+  --railway-accent: hsl(189, 94%, 42%);
+  --railway-success: hsl(160, 71%, 45%);
+  --railway-warning: hsl(43, 89%, 48%);
+  --railway-danger: hsl(0, 72%, 56%);
+  --railway-light: hsl(248, 100%, 99%);
+  --railway-gray: hsl(215, 10%, 45%);
+}
+
+.dark {
+  /* Base colors - Dark theme */
+  --background: hsl(215, 28%, 7%);
+  --foreground: hsl(210, 20%, 95%);
+  --muted: hsl(215, 25%, 12%);
+  --muted-foreground: hsl(215, 10%, 55%);
+  --popover: hsl(215, 28%, 7%);
+  --popover-foreground: hsl(210, 20%, 95%);
+  --card: hsl(215, 25%, 12%);
+  --card-foreground: hsl(210, 20%, 95%);
+  --border: hsl(215, 20%, 20%);
+  --input: hsl(215, 20%, 20%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(215, 25%, 12%);
+  --secondary-foreground: hsl(210, 20%, 95%);
+  --accent: hsl(215, 25%, 12%);
+  --accent-foreground: hsl(210, 20%, 95%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(210, 20%, 95%);
+  --ring: hsl(215, 20%, 65%);
+
+  /* Railway-specific colors - Dark theme */
+  --railway-primary: hsl(215, 28%, 7%);
+  --railway-secondary: hsl(215, 25%, 12%);
+  --railway-accent: hsl(189, 94%, 42%);
+  --railway-success: hsl(160, 71%, 45%);
+  --railway-warning: hsl(43, 89%, 48%);
+  --railway-danger: hsl(0, 72%, 56%);
+  --railway-light: hsl(215, 28%, 7%);
+  --railway-gray: hsl(215, 10%, 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  /* Railway-specific utility classes */
+  .bg-railway-primary {
+    background-color: var(--railway-primary);
+  }
+
+  .bg-railway-secondary {
+    background-color: var(--railway-secondary);
+  }
+
+  .bg-railway-accent {
+    background-color: var(--railway-accent);
+  }
+
+  .bg-railway-success {
+    background-color: var(--railway-success);
+  }
+
+  .bg-railway-warning {
+    background-color: var(--railway-warning);
+  }
+
+  .bg-railway-danger {
+    background-color: var(--railway-danger);
+  }
+
+  .bg-railway-light {
+    background-color: var(--railway-light);
+  }
+
+  .bg-railway-gray {
+    background-color: var(--railway-gray);
+  }
+
+  .text-railway-primary {
+    color: var(--railway-primary);
+  }
+
+  .text-railway-secondary {
+    color: var(--railway-secondary);
+  }
+
+  .text-railway-accent {
+    color: var(--railway-accent);
+  }
+
+  .text-railway-success {
+    color: var(--railway-success);
+  }
+
+  .text-railway-warning {
+    color: var(--railway-warning);
+  }
+
+  .text-railway-danger {
+    color: var(--railway-danger);
+  }
+
+  .text-railway-light {
+    color: var(--railway-light);
+  }
+
+  .text-railway-gray {
+    color: var(--railway-gray);
+  }
+
+  .border-railway-accent {
+    border-color: var(--railway-accent);
+  }
+
+  .border-railway-success {
+    border-color: var(--railway-success);
+  }
+
+  .border-railway-warning {
+    border-color: var(--railway-warning);
+  }
+
+  .border-railway-danger {
+    border-color: var(--railway-danger);
+  }
+
+  /* Custom animations */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-in-out;
+  }
+
+  /* Train indicator animations */
+  .train-running {
+    @apply animate-pulse-slow;
+  }
+
+  /* Smooth transitions */
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  /* Custom scrollbar for activity log */
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: var(--muted);
+    border-radius: 3px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background: var(--railway-accent);
+    border-radius: 3px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: var(--railway-primary);
+  }
+}
+
+/* Additional responsive utilities */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-railway {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-railway-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
