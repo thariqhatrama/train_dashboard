@@ -110,7 +110,7 @@ export function TrackVisualization({ status, isLoading }: TrackVisualizationProp
             <Building className="inline mr-2" size={16} />
             STASIUN
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {/* Peron Utama (SU) */}
             <div className="bg-blue-500 dark:bg-blue-600 rounded-lg p-4 text-white">
               <h4 className="font-medium mb-3">Peron Utama (SU)</h4>
@@ -124,7 +124,7 @@ export function TrackVisualization({ status, isLoading }: TrackVisualizationProp
             </div>
 
             {/* Peron Sekunder (SS) */}
-            <div className="bg-orange-500 dark:bg-orange-600 rounded-lg p-4 text-white">
+            <div className="bg-orange-500 dark:bg-purple-600 rounded-lg p-4 text-white">
               <h4 className="font-medium mb-3">Peron Sekunder (SS)</h4>
               <div className="flex items-center justify-between">
                 <TrafficLight state={status.lights.SS || { red: false, yellow: false, green: false }} />
