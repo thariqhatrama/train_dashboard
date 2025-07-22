@@ -1,6 +1,5 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { createServer, type Server } from "http";
 import { getTrackStatus, getSpeedData, postSpeedData, postTrainLog } from "./status";
 
 export async function registerRoutes(app: Express): Promise<Server> {
